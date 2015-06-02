@@ -1,7 +1,7 @@
 # iframefader
 iframefader provides simple crossfading slideshow functionality for a selection of webpages.
 
-Ideal for a raspberry pi with chrome browser in kiosk mode!
+Ideal for a raspberry pi with chrome browser in kiosk mode! No dependences, uses CSS3 animation for smooth fade transitions.
 
 Use the json file to set which urls you want to display, the animation speed and an optional ip address to be overlayed at the bottom corner of the screen. 
 
