@@ -16,6 +16,6 @@ var settings = {
 				{"page":"http://www.bbc.com"}
 			],
  	"animationSpeed":10,
- 	"ipInfo":"My IP: 10.55.134.???"
+ 	"ipInfo":"My Message here......??"
 }
 ```
