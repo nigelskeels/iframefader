@@ -1,102 +1,122 @@
 <html>
-<head>
-		<script src="settings.json"></script>
-		<style>
-			body {
-				margin:0;
-				padding: 0;
-				overflow:hidden;
-			}
-			iframe{
-				position: absolute;
-				left:0;
-				top: 0;
-				width:100%;
-				height:100%;
-				overflow:hidden;
-				/*height:80px;*/
-			}
+  <head>
+    <script src="settings.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      iframe {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        /*height:80px;*/
+      }
 
-			
-			@-webkit-keyframes fade {
-			    0%   { opacity: 0; }
-			    10%  { opacity: 1; }
-			    20%  { opacity: 0; }
-			    30%  { opacity: 0; }
- 				40%  { opacity: 0; } 
-				50%  { opacity: 0; }
-				60%  { opacity: 0; }
-				70%  { opacity: 0; }
-				80%  { opacity: 0; }
-				90%  { opacity: 0; }
-				100% { opacity: 0; }
-			}
+      @-webkit-keyframes fade {
+        0% {
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        20% {
+          opacity: 0;
+        }
+        30% {
+          opacity: 0;
+        }
+        40% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 0;
+        }
+        60% {
+          opacity: 0;
+        }
+        70% {
+          opacity: 0;
+        }
+        80% {
+          opacity: 0;
+        }
+        90% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
 
-			#infobox{
-				background-color:  rgba(0, 0, 0, 0.4);
-				color:#ffffff;
-				font-family: Arial,Helvetica Neue,Helvetica,sans-serif; 
-				font-size: 12px;
-				font-weight:bold;
-				text-align: center;
-				width:150px;
-				position: absolute;
-				bottom:0;
-				right: 0;
-				padding:3px;
+      #infobox {
+        background-color: rgba(0, 0, 0, 0.4);
+        color: #ffffff;
+        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        width: 150px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      startAnimation()
 
-			}
-			
-		</style>
-</head>
-	<body>
-		<script>
-			
-			startAnimation();
+      function startAnimation() {
+        var speed = settings.pages.length * settings.animationSpeed
+        setkeyframes(settings.pages.length)
 
-           	function startAnimation(){
-				
-	            var speed=settings.pages.length*settings.animationSpeed;
-				setkeyframes(settings.pages.length)
+        for (var i = 0; i < settings.pages.length; i++) {
+          console.log(settings.pages[i].page)
 
-	            for (var i = 0; i < settings.pages.length; i++) {
-	            	
-	            	console.log(settings.pages[i].page);
+          var iframe = document.createElement("iframe")
+          iframe.src = settings.pages[i].page
 
-	            	var iframe = document.createElement("iframe");
-	            	iframe.src=settings.pages[i].page;
-	            	
-	            	 // iframe.style.top= (i*90)+"px";
-	            	iframe.style.opacity=0;
-		            iframe.style.WebkitAnimation="fade "+speed+"s ease-in-out "+(i*settings.animationSpeed)+"s infinite";
-	            	document.body.appendChild(iframe);
-	            }
+          // iframe.style.top= (i*90)+"px";
+          iframe.style.opacity = 0
+          iframe.style.WebkitAnimation =
+            "fade " +
+            speed +
+            "s ease-in-out " +
+            i * settings.animationSpeed +
+            "s infinite"
+          document.body.appendChild(iframe)
+        }
 
-	            if(settings.ipInfo!=undefined){ 	
-		            var infobox = document.createElement("div");
-		            infobox.id="infobox";
-		            infobox.innerHTML = settings.ipInfo; 
-		            document.body.appendChild(infobox);
-	            }
-	        }
+        if (settings.ipInfo != undefined) {
+          var infobox = document.createElement("div")
+          infobox.id = "infobox"
+          infobox.innerHTML = settings.ipInfo
+          document.body.appendChild(infobox)
+        }
+      }
 
-	        function setkeyframes(amount){
-				var keyframes = "@-webkit-keyframes fade { "
-				var perc = 100/amount;
+      function setkeyframes(amount) {
+        var keyframes = "@-webkit-keyframes fade { "
+        var perc = 100 / amount
 
-				for (var i = 0; i < amount; i++) {
-					if(i==1){
-						keyframes = keyframes +Math.round(perc*i)+ "% { opacity: 1; } "		
-					}else{
-						keyframes = keyframes +Math.round(perc*i)+ "% { opacity: 0; } "		
-					}
-				};
+        for (var i = 0; i < amount; i++) {
+          if (i == 1) {
+            keyframes = keyframes + Math.round(perc * i) + "% { opacity: 1; } "
+          } else {
+            keyframes = keyframes + Math.round(perc * i) + "% { opacity: 0; } "
+          }
+        }
 
-				keyframes = keyframes+" 100% { opacity: 0; } }"				
-				document.styleSheets[0].deleteRule(2) 
-				document.styleSheets[0].insertRule(keyframes, 2);
-	        }
-
-		</script>
-    </body>
+        keyframes = keyframes + " 100% { opacity: 0; } }"
+        document.styleSheets[0].deleteRule(2)
+        document.styleSheets[0].insertRule(keyframes, 2)
+      }
+    </script>
+  </body>
 </html>
