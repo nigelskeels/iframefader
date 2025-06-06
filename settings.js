@@ -1,10 +1,13 @@
 var settings = {
   pages: [
-    { page: "http://www.hypermodernism.com/" },
-    { page: "http://www.hypermodernism.com/cv" },
-    { page: "http://www.hypermags.com" },
-    { page: "http://www.bbc.com" },
+    { page: "https://www.hypermodernism.com/" },
+    { page: "https://www.hypermodernism.com/cv" },
+    { page: "https://www.hypermodernism.com/projects.html" },
+    {
+      page: "https://www.hypermodernism.com/page/awards-and-accreditations.html",
+    },
+    { page: "https://www.hypermodernism.com/clients.html" },
   ],
   animationSpeed: 4,
-  ipInfo: "My IP: 10.55.134.???",
+  ipInfo: "Your message here...",
 }
